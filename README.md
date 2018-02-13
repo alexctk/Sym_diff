@@ -19,3 +19,8 @@ The simplification functions produce an equivalent ME with a different form.
 The unparser takes a given ME, for example Add (Var 'x') (Num 3) and returns a character string "x+3".
 
 The parser takes a character string and gives the internal representation. For example, "x**3" returns Pow (Var 'x') (3)
+
+# Using the tool
+There is no main function yet, so it should not be compiled with ghc and ran.
+Instead, use GHC's interactive environment, GHCi to test the functions yourself. 
+Some examples of function calls are shown in the "tests" file.
