@@ -8,9 +8,7 @@ from uncertainty import *
 # <term> ::= <factor> | <term> * <factor> 
 # <factor> ::= <element> | <element> ** <numeral>
 # <element> ::= <measurement> | <variable> | <numeral> | "(" <expression> ")"
-# <measure> ::= <variable> | <decimal> "+/-" <decimal> | <variable> "+/-" <decimal>
 # <variable> ::= [a-z]
-# <decimal> ::= [0-9]+ "." [0-9]+ | <numeral> ::= <numeral> | <numeral> "." <numeral>
 # <numeral> ::= [0-9]+
 
 
@@ -217,24 +215,6 @@ def extend_expr(me, string):
     else:
         return [me, string]
 
-
-def parse_measure
-
-def parse_decimal(string):
-    numeral_and_more = parse_numeral(string)
-    if type(numeral_and_more) == ErrorME:
-        return ErrorME('Decimal parse failure at numeral parse')
-    elif (numeral_and_more[1] == ""):
-        return numeral_and_more
-    elif (numeral_and_more[1][0] == '.'):
-        after_dot = parse_numeral(numeral_and_more[1][1:])
-        if type(after_dot) == ErrorME:
-            return ErrorME('Decimal parse failure after dot')
-        else:
-            return [Decimal(numeral_and_more[0], after_dot[0]), after_dot[1]]
-    else:
-        return numeral_and_more
-
     
 def parse_me(string):
     if string == "":
@@ -249,10 +229,3 @@ def parse_me(string):
         return ErrorME('me parse failure')
         
 
-
-
-test_decimal = "1111.3232332"
-decimal_parse = parse_decimal(test_decimal)
-print( show_me(decimal_parse[0]))
-
-print( show_me(Decimal(1,2)))
